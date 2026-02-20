@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Nex-ZMH/Agent-websearch-skill/main/logo.jpg" width="660" alt="Agent WebSearch Skill Logo">
+</p>
+
 <h1 align="center">Agent WebSearch Skill 🔍</h1>
 
 <p align="center">
@@ -26,17 +30,24 @@
   <a href="https://github.com/Nex-ZMH/Agent-websearch-skill">
     <img src="https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey.svg?style=flat-square" alt="Platform">
   </a>
-  <img src="https://img.shields.io/badge/No%20VPN%20Required-✓-success.svg?style=flat-square" alt="No VPN Required">
+  <img src="https://img.shields.io/badge/No%20Proxy%20Required-✓-success.svg?style=flat-square" alt="No Proxy Required">
 </p>
 
 <p align="center">
-Built by <a href="https://github.com/Nex-ZMH">Nex-ZMH</a>, an AI enthusiast exploring the boundaries of automation.
+Built by <a href="https://github.com/Nex-ZMH">Nex-ZMH</a>, an energy industry AI explorer from a remote mountain village of China.
 </p>
 
 <p align="center">
-  🌐 Language:
+  🌐 Languages:
   <a href="#english">English</a> ·
-  <a href="#中文">简体中文</a>
+  <a href="#中文">简体中文</a> ·
+</p>
+
+<p align="center">
+  ⚡️Quick Routes: 
+  <a href="#getting-started">Getting Started</a> ·
+  <a href="#features">Features</a> ·
+  <a href="#installation">Installation</a> ·
 </p>
 
 ---
@@ -72,11 +83,177 @@ Built by <a href="https://github.com/Nex-ZMH">Nex-ZMH</a>, an AI enthusiast expl
 
 ---
 
+## English
+
+### Getting Started
+
+**Agent WebSearch Skill** — An intelligent multi-engine search solution that works in any network environment. Whether you have VPN access or not, whether you have API keys or not, this tool ensures you can always perform web searches seamlessly.
+
+### Features
+
+- 🔍 **Multi-Engine Architecture** — DuckDuckGo, Tavily, Bing API, Bing Scraper with auto-fallback
+- 🔄 **Auto Failover** — Automatically switches to next available engine when one fails
+- 🌐 **Network Adaptive** — Detects network environment and selects optimal engine
+- 📊 **Smart Quota Management** — Prioritizes free engines to save API quota
+- ⚡ **Zero Config** — Works out of the box without any API keys
+- 🎯 **Quality Mode** — Optional quality-first mode for important searches
+
+### Installation
+
+```bash
+# Clone repository
+git clone https://github.com/Nex-ZMH/Agent-websearch-skill.git
+cd Agent-websearch-skill
+
+# Install dependencies
+pip install requests tavily-python duckduckgo-search beautifulsoup4
+```
+
+### Usage
+
+```python
+from multi_search import search, get_status, fetch_web_content
+
+# Basic search — auto-select best engine
+results = search("Python async tutorial", max_results=5)
+
+# Quality-first mode — for important searches
+results = search("AI research papers 2024", max_results=5, prefer_quality=True)
+
+# Force network recheck after proxy switch
+results = search("latest tech news", force_network_check=True)
+
+# Check system status
+status = get_status()
+
+# Fetch detailed content from URL
+content = fetch_web_content(results[0]['href'], max_length=3000)
+```
+
+### Smart Search Strategy
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                  Search Engine Selection Strategy            │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  Balanced Mode (Default) — Free engines first, save quota   │
+│  ┌──────────┐   ┌─────────┐   ┌──────────┐   ┌─────────┐   │
+│  │DuckDuckGo│ → │ Tavily  │ → │ Bing API │ → │  Bing   │   │
+│  │  (Free)  │   │(API)    │   │  (API)   │   │ Scraper │   │
+│  └──────────┘   └─────────┘   └──────────┘   └─────────┘   │
+│       ↓              ↓              ↓              ↓        │
+│   Needs Proxy    Proxy+API    Proxy+API   Works in China    │
+│                                                             │
+│  Quality First Mode — Premium APIs first for best results   │
+│  ┌─────────┐    ┌──────────┐   ┌──────────┐   ┌─────────┐  │
+│  │ Tavily  │ → │DuckDuckGo│ → │ Bing API │ → │  Bing   │  │
+│  │(Premium)│    │  (Free)  │   │  (API)   │   │ Scraper │  │
+│  └─────────┘    └──────────┘   └──────────┘   └─────────┘  │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### Engine Comparison
+
+| Engine | Proxy Required | API Key | Monthly Quota | Quality | Best For |
+|--------|:--------------:|:-------:|:-------------:|:-------:|----------|
+| **DuckDuckGo** | ✅ Yes | ❌ No | ♾️ Unlimited | ⭐⭐⭐ | Daily searches |
+| **Tavily API** | ✅ Yes | ✅ Yes | 1000 | ⭐⭐⭐⭐⭐ | AI Agents, important searches |
+| **Bing API** | ✅ Yes | ✅ Yes | 1000 | ⭐⭐⭐⭐ | Official stable search |
+| **Bing Scraper** | ❌ No | ❌ No | ♾️ Unlimited | ⭐⭐⭐ | Fallback without proxy |
+
+### Why Choose Us?
+
+**Scenario 1: No Proxy, No API Key (China mainland)**
+```
+Search → DuckDuckGo fails → Skip Tavily → Skip Bing API → Bing Scraper succeeds ✅
+Result: Works perfectly without any configuration!
+```
+
+**Scenario 2: Has Proxy, Has Tavily API Key**
+```
+Search → DuckDuckGo succeeds ✅
+Result: Uses free engine, saves API quota
+```
+
+**Scenario 3: Unstable Network**
+```
+Search → DuckDuckGo fails → Tavily succeeds ✅
+Result: Auto-switch, seamless experience
+```
+
+### API Configuration (Optional)
+
+> **Note**: This project works **out of the box** without any configuration!
+
+**Method 1: Environment Variables (Recommended)**
+```bash
+export TAVILY_API_KEY="your-tavily-api-key"
+export BING_API_KEY="your-bing-api-key"
+```
+
+**Method 2: Configuration File**
+```bash
+cp api_keys.example.json api_keys.json
+# Edit api_keys.json with your keys
+```
+
+### Requirements
+
+- Python 3.8+
+- `requests` `tavily-python` `duckduckgo-search` `beautifulsoup4`
+
+---
+
 ## 中文
 
-### 智能搜索策略详解
+### 简介
 
-这是本项目的核心价值所在。我们设计了**四层搜索引擎架构**，确保在任何网络环境下都能正常工作：
+**Agent WebSearch Skill** — 一款智能多引擎搜索解决方案，在任何网络环境下都能正常工作。无论你是否有科学上网，无论你是否有 API Key，这个工具都能确保你顺畅地进行网络搜索。
+
+### 功能特性
+
+- 🔍 **多引擎架构** — DuckDuckGo、Tavily、Bing API、Bing 爬虫，自动故障转移
+- 🔄 **自动切换** — 一个引擎失败，自动切换到下一个可用引擎
+- 🌐 **网络自适应** — 自动检测网络环境，选择最优引擎
+- 📊 **智能配额管理** — 优先使用免费引擎，节省 API 配额
+- ⚡ **零配置** — 无需任何 API Key，开箱即用
+- 🎯 **质量模式** — 可选的质量优先模式，适合重要搜索
+
+### 安装方法
+
+```bash
+# 克隆仓库
+git clone https://github.com/Nex-ZMH/Agent-websearch-skill.git
+cd Agent-websearch-skill
+
+# 安装依赖
+pip install requests tavily-python duckduckgo-search beautifulsoup4
+```
+
+### 使用方法
+
+```python
+from multi_search import search, get_status, fetch_web_content
+
+# 基本搜索 — 自动选择最优引擎
+results = search("Python 异步编程教程", max_results=5)
+
+# 质量优先模式 — 适合重要搜索
+results = search("AI 论文 2024", max_results=5, prefer_quality=True)
+
+# 切换网络后强制重新检测
+results = search("最新科技新闻", force_network_check=True)
+
+# 查看当前系统状态
+status = get_status()
+
+# 抓取网页详细内容
+content = fetch_web_content(results[0]['href'], max_length=3000)
+```
+
+### 智能搜索策略
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -89,7 +266,7 @@ Built by <a href="https://github.com/Nex-ZMH">Nex-ZMH</a>, an AI enthusiast expl
 │  │ (免费)   │    │(需API)  │    │ (需API)  │    │ 爬虫    │ │
 │  └─────────┘    └─────────┘    └──────────┘    └─────────┘ │
 │       ↓              ↓              ↓              ↓       │
-│    无需科学上网   需科学上网+API  需科学上网+API  国内直连    │
+│    需科学上网    需科学上网+API  需科学上网+API  国内直连    │
 │                                                             │
 │  质量优先模式 — 优先高质量 API，适合重要搜索                 │
 │  ┌─────────┐    ┌─────────┐    ┌──────────┐    ┌─────────┐ │
@@ -129,42 +306,6 @@ Built by <a href="https://github.com/Nex-ZMH">Nex-ZMH</a>, an AI enthusiast expl
 结果：自动切换，用户无感知
 ```
 
-### 快速开始
-
-```bash
-# 克隆仓库
-git clone https://github.com/Nex-ZMH/Agent-websearch-skill.git
-cd Agent-websearch-skill
-
-# 安装依赖
-pip install requests tavily-python duckduckgo-search beautifulsoup4
-
-# 立即使用（无需任何配置！）
-python -c "from multi_search import search; print(search('Python 教程'))"
-```
-
-### 使用示例
-
-```python
-from multi_search import search, get_status, fetch_web_content
-
-# 基本搜索 — 自动选择最优引擎
-results = search("Python 异步编程教程", max_results=5)
-
-# 质量优先模式 — 适合重要搜索
-results = search("AI 论文 2024", max_results=5, prefer_quality=True)
-
-# 切换 VPN 后强制重新检测网络
-results = search("最新科技新闻", force_network_check=True)
-
-# 查看当前系统状态
-status = get_status()
-# 输出：各引擎可用性、API 配额剩余情况
-
-# 抓取网页详细内容
-content = fetch_web_content(results[0]['href'], max_length=3000)
-```
-
 ### API 配置（可选）
 
 > **重要**：本项目**无需任何配置即可使用**！以下配置仅用于解锁高级功能。
@@ -182,121 +323,6 @@ cp api_keys.example.json api_keys.json
 ```
 
 ### 系统要求
-
-- Python 3.8+
-- `requests` `tavily-python` `duckduckgo-search` `beautifulsoup4`
-
----
-
-## English
-
-### Smart Search Strategy Explained
-
-This is the core value of our project. We designed a **four-layer search engine architecture** that ensures functionality in any network environment:
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│                  Search Engine Selection Strategy            │
-├─────────────────────────────────────────────────────────────┤
-│                                                             │
-│  Balanced Mode (Default) — Free engines first, save quota   │
-│  ┌──────────┐   ┌─────────┐   ┌──────────┐   ┌─────────┐   │
-│  │DuckDuckGo│ → │ Tavily  │ → │ Bing API │ → │  Bing   │   │
-│  │  (Free)  │   │(API)    │   │  (API)   │   │ Scraper │   │
-│  └──────────┘   └─────────┘   └──────────┘   └─────────┘   │
-│       ↓              ↓              ↓              ↓        │
-│   Needs VPN     VPN+API     VPN+API    Works in China  │
-│                                                             │
-│  Quality First Mode — Premium APIs first for best results   │
-│  ┌─────────┐    ┌──────────┐   ┌──────────┐   ┌─────────┐  │
-│  │ Tavily  │ → │DuckDuckGo│ → │ Bing API │ → │  Bing   │  │
-│  │(Premium)│    │  (Free)  │   │  (API)   │   │ Scraper │  │
-│  └─────────┘    └──────────┘   └──────────┘   └─────────┘  │
-│                                                             │
-└─────────────────────────────────────────────────────────────┘
-```
-
-### Engine Comparison
-
-| Engine | VPN Required | API Key | Monthly Quota | Quality | Best For |
-|--------|:--------------:|:-------:|:-------------:|:-------:|----------|
-| **DuckDuckGo** | ✅ Yes | ❌ No | ♾️ Unlimited | ⭐⭐⭐ | Daily searches |
-| **Tavily API** | ✅ Yes | ✅ Yes | 1000 | ⭐⭐⭐⭐⭐ | AI Agents, important searches |
-| **Bing API** | ✅ Yes | ✅ Yes | 1000 | ⭐⭐⭐⭐ | Official stable search |
-| **Bing Scraper** | ❌ No | ❌ No | ♾️ Unlimited | ⭐⭐⭐ | Fallback without VPN |
-
-### Why Choose Us?
-
-**Scenario 1: No VPN, No API Key (China mainland)**
-```
-Search → DuckDuckGo fails → Skip Tavily → Skip Bing API → Bing Scraper succeeds ✅
-Result: Works perfectly without any configuration!
-```
-
-**Scenario 2: Has VPN, Has Tavily API Key**
-```
-Search → DuckDuckGo succeeds ✅
-Result: Uses free engine, saves API quota
-```
-
-**Scenario 3: Unstable Network**
-```
-Search → DuckDuckGo fails → Tavily succeeds ✅
-Result: Auto-switch, seamless experience
-```
-
-### Quick Start
-
-```bash
-# Clone repository
-git clone https://github.com/Nex-ZMH/Agent-websearch-skill.git
-cd Agent-websearch-skill
-
-# Install dependencies
-pip install requests tavily-python duckduckgo-search beautifulsoup4
-
-# Use immediately (no configuration needed!)
-python -c "from multi_search import search; print(search('Python tutorial'))"
-```
-
-### Usage Examples
-
-```python
-from multi_search import search, get_status, fetch_web_content
-
-# Basic search — auto-select best engine
-results = search("Python async tutorial", max_results=5)
-
-# Quality-first mode — for important searches
-results = search("AI research papers 2024", max_results=5, prefer_quality=True)
-
-# Force network recheck after VPN switch
-results = search("latest tech news", force_network_check=True)
-
-# Check system status
-status = get_status()
-
-# Fetch detailed content from URL
-content = fetch_web_content(results[0]['href'], max_length=3000)
-```
-
-### API Configuration (Optional)
-
-> **Note**: This project works **out of the box** without any configuration!
-
-**Method 1: Environment Variables (Recommended)**
-```bash
-export TAVILY_API_KEY="your-tavily-api-key"
-export BING_API_KEY="your-bing-api-key"
-```
-
-**Method 2: Configuration File**
-```bash
-cp api_keys.example.json api_keys.json
-# Edit api_keys.json with your keys
-```
-
-### Requirements
 
 - Python 3.8+
 - `requests` `tavily-python` `duckduckgo-search` `beautifulsoup4`
