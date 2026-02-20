@@ -5,19 +5,11 @@
 <h1 align="center">Agent WebSearch Skill 🔍</h1>
 
 <p align="center">
-  <b>Intelligent Multi-Engine Search — Works With or Without VPN</b>
-</p>
-
-<p align="center">
-  <b>无需科学上网 · 无需国外 API · 开箱即用</b>
+  <b>Intelligent Multi-Engine Search — Works With or Without Proxy</b>
 </p>
 
 <p align="center">
   <i>Zero config. Zero API keys. Auto-fallback from DuckDuckGo → Tavily → Bing API → Bing Scraper.</i>
-</p>
-
-<p align="center">
-  <i>智能多引擎搜索，自动故障转移，国内直连可用，完美适配复杂网络环境。</i>
 </p>
 
 <p align="center">
@@ -54,32 +46,32 @@ Built by <a href="https://github.com/Nex-ZMH">Nex-ZMH</a>, an energy industry AI
 
 ## The Problem We Solve
 
-### 🚫 常见痛点 / Common Pain Points
+### 🚫 Common Pain Points
 
-| 问题 | 描述 |
+| Issue | Description |
 |------|------|
-| 🔒 **无法获取国外 API Key** | Brave Search 等需要国外信用卡或 Visa 卡注册，国内用户难以申请 |
-| 🌐 **网络环境不稳定** | 科学上网时断时续，搜索引擎可用性随时变化 |
-| 💰 **API 配额有限** | 免费额度用完后，搜索功能直接失效 |
-| 🔄 **手动切换繁琐** | 每次网络变化都要手动更换搜索引擎 |
+| 🔒 **Cannot Get Foreign API Keys** | Brave Search require foreign credit cards or Visa cards, difficult for users in China |
+| 🌐 **Unstable Network Environment** | Proxy connections are intermittent, search engine availability changes constantly |
+| 💰 **Limited API Quota** | Search functionality stops working after free quota is exhausted |
+| 🔄 **Tedious Manual Switching** | Need to manually change search engines every time network changes |
 
-> **💡 为什么不直接用 OpenClaw 内置的 Brave Search？**
+> **💡 Why Not Use  Brave Search?**
 > 
-> OpenClaw 内置的 Brave Search 需要：
-> - ✅ 科学上网才能访问
-> - ✅ Visa/MasterCard 信用卡注册账号
-> - ✅ 绑定付款方式才能获取 API Key
+> OpenClaw's built-in Brave Search requires:
+> - ✅ Proxy access to reach the service
+> - ✅ Visa/MasterCard credit card for account registration
+> - ✅ Payment method binding to get API Key
 > 
-> 对于大多数国内用户来说，这些门槛难以跨越。而本项目**无需任何门槛**，克隆即可使用！
+> For most users in China, these barriers are hard to overcome. This project has **zero barriers** — just clone and use!
 
-### ✅ 我们的解决方案
+### ✅ Our Solution
 
-**Agent WebSearch Skill** 通过智能引擎选择策略，完美解决上述问题：
+**Agent WebSearch Skill** solves these problems through intelligent engine selection strategy:
 
-- ✨ **零配置可用** — 即使没有任何 API Key，也能通过 Bing 爬虫正常搜索
-- 🔄 **自动故障转移** — 一个引擎失败，自动切换到下一个可用引擎
-- 📊 **智能配额管理** — 优先使用免费引擎，节省 API 配额给关键时刻
-- 🌐 **网络自适应** — 自动检测网络环境，选择当前最优引擎
+- ✨ **Zero Config Ready** — Works with Bing Scraper even without any API Key
+- 🔄 **Auto Failover** — Automatically switches to next available engine when one fails
+- 📊 **Smart Quota Management** — Prioritizes free engines to save API quota for critical moments
+- 🌐 **Network Adaptive** — Auto-detects network environment and selects optimal engine
 
 ---
 
