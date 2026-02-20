@@ -5,7 +5,7 @@
 <h1 align="center">Agent WebSearch Skill 🔍</h1>
 
 <p align="center">
-  <b>Intelligent Multi-Engine Search — Works With or Without Proxy</b>
+  <b>Intelligent Multi-Engine Search — Works With or Without VPN</b>
 </p>
 
 <p align="center">
@@ -22,7 +22,7 @@
   <a href="https://github.com/Nex-ZMH/Agent-websearch-skill">
     <img src="https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey.svg?style=flat-square" alt="Platform">
   </a>
-  <img src="https://img.shields.io/badge/No%20Proxy%20Required-✓-success.svg?style=flat-square" alt="No Proxy Required">
+  <img src="https://img.shields.io/badge/No%20VPN%20Required-✓-success.svg?style=flat-square" alt="No VPN Required">
 </p>
 
 <p align="center">
@@ -51,14 +51,14 @@ Built by <a href="https://github.com/Nex-ZMH">Nex-ZMH</a>, an energy industry AI
 | Issue | Description |
 |------|------|
 | 🔒 **Cannot Get Foreign API Keys** | Brave Search require foreign credit cards or Visa cards, difficult for users in China |
-| 🌐 **Unstable Network Environment** | Proxy connections are intermittent, search engine availability changes constantly |
+| 🌐 **Unstable Network Environment** | VPN connections are intermittent, search engine availability changes constantly |
 | 💰 **Limited API Quota** | Search functionality stops working after free quota is exhausted |
 | 🔄 **Tedious Manual Switching** | Need to manually change search engines every time network changes |
 
 > **💡 Why Not Use  Brave Search?**
 > 
 > OpenClaw's built-in Brave Search requires:
-> - ✅ Proxy access to reach the service
+> - ✅ VPN access to reach the service
 > - ✅ Visa/MasterCard credit card for account registration
 > - ✅ Payment method binding to get API Key
 > 
@@ -112,7 +112,7 @@ results = search("Python async tutorial", max_results=5)
 # Quality-first mode — for important searches
 results = search("AI research papers 2024", max_results=5, prefer_quality=True)
 
-# Force network recheck after proxy switch
+# Force network recheck after VPN switch
 results = search("latest tech news", force_network_check=True)
 
 # Check system status
@@ -135,7 +135,7 @@ content = fetch_web_content(results[0]['href'], max_length=3000)
 │  │  (Free)  │   │(API)    │   │  (API)   │   │ Scraper │   │
 │  └──────────┘   └─────────┘   └──────────┘   └─────────┘   │
 │       ↓              ↓              ↓              ↓        │
-│   Needs Proxy    Proxy+API    Proxy+API   Works in China    │
+│   Needs VPN    VPN+API    VPN+API   Works in China    │
 │                                                             │
 │  Quality First Mode — Premium APIs first for best results   │
 │  ┌─────────┐    ┌──────────┐   ┌──────────┐   ┌─────────┐  │
@@ -148,22 +148,22 @@ content = fetch_web_content(results[0]['href'], max_length=3000)
 
 ### Engine Comparison
 
-| Engine | Proxy Required | API Key | Monthly Quota | Quality | Best For |
+| Engine | VPN Required | API Key | Monthly Quota | Quality | Best For |
 |--------|:--------------:|:-------:|:-------------:|:-------:|----------|
 | **DuckDuckGo** | ✅ Yes | ❌ No | ♾️ Unlimited | ⭐⭐⭐ | Daily searches |
 | **Tavily API** | ✅ Yes | ✅ Yes | 1000 | ⭐⭐⭐⭐⭐ | AI Agents, important searches |
 | **Bing API** | ✅ Yes | ✅ Yes | 1000 | ⭐⭐⭐⭐ | Official stable search |
-| **Bing Scraper** | ❌ No | ❌ No | ♾️ Unlimited | ⭐⭐⭐ | Fallback without proxy |
+| **Bing Scraper** | ❌ No | ❌ No | ♾️ Unlimited | ⭐⭐⭐ | Fallback without VPN |
 
 ### Why Choose Us?
 
-**Scenario 1: No Proxy, No API Key (China mainland)**
+**Scenario 1: No VPN, No API Key (China mainland)**
 ```
 Search → DuckDuckGo fails → Skip Tavily → Skip Bing API → Bing Scraper succeeds ✅
 Result: Works perfectly without any configuration!
 ```
 
-**Scenario 2: Has Proxy, Has Tavily API Key**
+**Scenario 2: Has VPN, Has Tavily API Key**
 ```
 Search → DuckDuckGo succeeds ✅
 Result: Uses free engine, saves API quota
